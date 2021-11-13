@@ -1,0 +1,19 @@
+{
+    "name": "gmarsano/chilean-phone-tool",
+    "description": "validate and format chilean phone numbers.",
+    "keywords": [
+        "telefono", "chile", "chilean", "phone", "formatter", "validator"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Gmarsano\\ChileanPhoneTool\\": "src/"
+        }
+    },
+    "authors": [{
+        "name": "Gaston Marsano",
+        "email": "gaston.marsano@gmail.com"
+    }],
+    "require": {}
+}
