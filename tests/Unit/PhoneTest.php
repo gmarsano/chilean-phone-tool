@@ -15,8 +15,10 @@ class PhoneTest extends TestCase
             "+56-9-87-654-321"
         ];
         foreach ($values as $value) {
+            $found = Phone::setPhone($value)->getOld();
             $this->assertTrue(
-                Phone::setPhone($value)->getOld() === (string)$value
+                (string)$value === $found,
+                "Expected \"$value\" found \"$found\"."
             );
         }
     }
@@ -33,7 +35,11 @@ class PhoneTest extends TestCase
             ["123", "invalid: 1.2-3"],
         ];
         foreach ($expected as $value) {
-            $this->assertTrue($value[0] === Phone::parse($value[1])->getOld());
+            $found = Phone::parse($value[1])->getOld();
+            $this->assertTrue(
+                $value[0] === $found,
+                "Expected \"{$value[0]}\" found \"$found\"."
+            );
         }
     }
 
@@ -68,13 +74,19 @@ class PhoneTest extends TestCase
                 $this->fail('Exception was not thrown.');
             } catch (\Throwable $e) {
                 $this->assertInstanceOf(\Exception::class, $e);
-                $this->assertTrue($e->getCode() === $case[0]);
+                $this->assertTrue(
+                     $case[0] === $e->getCode(),
+                    "Expected {$case[0]} but found {$e->getCode()}."
+                );
             }
         }
         foreach ($cases() as $case) {
             $phone = $case[1]->quiet();
             $this->assertFalse($phone->isValid());
-            $this->assertTrue(isset($phone->errors()[$case[0]]));
+            $this->assertTrue(
+                isset($phone->errors()[$case[0]]),
+                "Expected {$case[0]} as error code."
+            );
         }
     }
 
