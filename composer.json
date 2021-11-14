@@ -6,14 +6,21 @@
     ],
     "type": "library",
     "license": "MIT",
+    "authors": [{
+        "name": "Gaston Marsano",
+        "email": "gaston.marsano@gmail.com"
+    }],
     "autoload": {
         "psr-4": {
             "Gmarsano\\ChileanPhoneTool\\": "src/"
         }
     },
-    "authors": [{
-        "name": "Gaston Marsano",
-        "email": "gaston.marsano@gmail.com"
-    }],
-    "require": {}
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
 }
