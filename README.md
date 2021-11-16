@@ -1,7 +1,4 @@
-<h1 align="center">
-  <img src="chile.png" style='vertical-align: middle'></img>
-  Chilean Phone Tool ☎️
-</h1>
+<h1 align="center">🇨🇱 Chilean Phone Tool ☎️</h1>
 
 ## Introduction
 
@@ -31,10 +28,9 @@ A PHP composer package to work with Chilean 🇨🇱 phone numbers.
       - [`format`](#format)
       - [Choosing format](#choosing-format)
     - [Factory](#factory)
-  - [Next work](#next-work)
+    - [Aliases](#aliases)
   - [Inspired by](#inspired-by)
   - [License](#license)
-
 
 ## Install
 
@@ -309,9 +305,14 @@ Phone::factory()->make(1, true)->first();
 // => "56555182350"
 ```
 
-## Next work
+### Aliases
 
-* Testing!
+|methods|aliases|
+|:----:|:---:|
+|get()|number|
+|get(true)|fullNumber|
+|getPrefix|prefix|
+|validate|isValid|
 
 ## Inspired by
 [Freshworks Chilean Bundle](https://github.com/freshworkstudio/ChileanBundle)
@@ -320,7 +321,3 @@ Phone::factory()->make(1, true)->first();
 ## License
 MIT License  
 Copyright (c) 2021 gmarsano
-
-
----
-<div style="font-size: 10px">Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
