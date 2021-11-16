@@ -445,6 +445,17 @@ class Phone
         }
         $this->_phone = ltrim($this->_phone, "0");
         $this->_digits = str_split($this->_phone);
+        if (
+            count($this->_digits) > 11 &&
+            '56' === $this->_digits[0] . $this->_digits[1]
+        ) {
+            for ($i = 2; $i < count($this->_digits); $i++) {
+                if ($this->_digits[$i] !== '0') break;
+                unset($this->_digits[$i]);
+            }
+            $this->_digits = array_values($this->_digits);
+            $this->_phone = implode($this->_digits);
+        }
         $this->_parsed = true;
     }
 
