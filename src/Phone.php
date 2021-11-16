@@ -339,6 +339,10 @@ class Phone
             count($this->_digits) === 8
                 ? array_unshift($this->_digits, '2')
                 : array_splice($this->_digits, 2, 0, '2');
+            $oldQuiet = $this->_quiet;
+            $this->_quiet = true;
+            $this->throwInvalidFormat();
+            $this->_quiet = $oldQuiet;
         }
         if (!$this->passCountryCodeTest()) return;
         if (!$this->passPrefixTest()) return;
