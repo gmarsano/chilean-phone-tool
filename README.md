@@ -5,6 +5,8 @@
 A PHP composer package to work with Chilean 🇨🇱 phone numbers.
 
 ### Features
+- Parsing
+- Get prefix
 - Validation
 - Formatting
 - Factory
@@ -14,6 +16,7 @@ A PHP composer package to work with Chilean 🇨🇱 phone numbers.
     - [Features](#features)
     - [Contents](#contents)
   - [Install](#install)
+    - [Requirements](#requirements)
   - [Usage](#usage)
     - [Set a phone number.](#set-a-phone-number)
       - [`parse`](#parse)
@@ -37,6 +40,9 @@ A PHP composer package to work with Chilean 🇨🇱 phone numbers.
 ```sh
 composer require gmarsano/chilean-phone-tool
 ```
+
+### Requirements
+- PHP >= 7.3
 
 ## Usage
 

@@ -87,6 +87,27 @@ class FactoryTest extends TestCase
         }
     }
 
+    public function testExceptionThrowWhenCountBreaksMaxUniqueValues()
+    {
+        $factory = new Factory();
+        $counts = [
+            '9'     => pow(10, 8),
+            '32'    => pow(10, 7)
+        ];
+        foreach ($counts as $key => $value) {
+            try {
+                $factory->prefix($key)->unique()->make($value);
+                $this->fail('Exception was not thrown.');
+            } catch (\Throwable $e) {
+                $this->assertInstanceOf(\Exception::class, $e);
+                $this->assertEquals(
+                    "Can't get $value unique values.",
+                    $e->getMessage()
+                );
+            }
+        }
+    }
+
     public function testCanITestUniqueMaybeDont()
     {
         $factory = new Factory();

@@ -15,6 +15,9 @@ class Factory
     public function make(int $count = 1, bool $countryCode = false): Bag
     {
         if (!isset($this->_prefix)) $this->initRandomPrefixOptions();
+        if ($this->_unique && !$this->checkMaxCountAllowed($count)) {
+            throw new \Exception("Can't get $count unique values.", 1);
+        }
         $response = $this->_unique
             ? $this->getUniqueBase($count)
             : $this->getBase($count);
@@ -127,5 +130,18 @@ class Factory
         $k = 0.0001;
         $divisor = 1 + pow(exp(1), (-$k * ($x - 1)));
         return ceil(60000 / $divisor - 29990);
+    }
+
+    protected function checkMaxCountAllowed(int $count): bool
+    {
+        $lastLen = 0;
+        $options = $this->_prefix
+            ? [$this->_prefix]
+            : $this->_options;
+        foreach ($options as $value) {
+            $len = strlen($value);
+            if ($len > $lastLen) $lastLen = $len;
+        }
+        return $count < pow(10, 9 - $lastLen);
     }
 }
