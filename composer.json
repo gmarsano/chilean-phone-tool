@@ -10,6 +10,12 @@
         "name": "Gaston Marsano",
         "email": "gaston.marsano@gmail.com"
     }],
+    "require": {
+        "php": ">=7.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
     "autoload": {
         "psr-4": {
             "Gmarsano\\ChileanPhoneTool\\": "src/"
@@ -19,8 +25,5 @@
         "psr-4": {
             "Tests\\": "tests/"
         }
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^9.5"
     }
 }
