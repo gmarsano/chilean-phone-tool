@@ -6,6 +6,8 @@ use Gmarsano\ChileanPhoneTool\Contracts\FormatterInterface;
 
 class Factory
 {
+    const MAX_UNIQUE_VALUES = 1000000;
+
     private $_unique = false;
     private $_cellPhone = false;
     private $_landLine = false;
@@ -134,14 +136,6 @@ class Factory
 
     protected function checkMaxCountAllowed(int $count): bool
     {
-        $lastLen = 0;
-        $options = $this->_prefix
-            ? [$this->_prefix]
-            : $this->_options;
-        foreach ($options as $value) {
-            $len = strlen($value);
-            if ($len > $lastLen) $lastLen = $len;
-        }
-        return $count < pow(10, 9 - $lastLen);
+        return $count <= self::MAX_UNIQUE_VALUES;
     }
 }
