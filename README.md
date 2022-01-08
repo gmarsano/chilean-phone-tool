@@ -83,7 +83,7 @@ Phone::parse(1.23)->quiet()->number();
 ```
 
 #### `setPhone`
-Some times you just want to know if an input value is a valid phone number
+Sometimes you just want to know if an input value is a valid phone number
 without clean or make any changes on it before validation. It's time to use
 `setPhone`:
 
@@ -173,8 +173,8 @@ $phone->prefix()
 #### `fix` and `luckyFix`
 Tries to set a valid phone from original input.
 ```php
-$phone = Phone::setPhone("+56 032 7-654-321")->quiet();
-$phone->validate();
+$phone = Phone::setPhone("+56 032 7-654-321");
+$phone->quiet()->validate();
 // => false
 
 $phone->fix()->validate();
@@ -193,8 +193,8 @@ $phone->getOld();
 Sometimes the inputs may lack the Santiago prefix (2). Use `luckFix` to fix and
 try to guess if the missing prefix can be fixed.
 ```php
-$phone = Phone::parse("+56-37-654-321")->quiet();
-$phone->validate();
+$phone = Phone::parse("+56-37-654-321");
+$phone->quiet()->validate();
 // => false
 
 $phone->luckyFix()->validate();
@@ -219,7 +219,8 @@ original was modified because it was invalid, then you can count errors.
 #### `format`
 Use `format` on a valid phone to get the value in standard numbering format.
 ```php
-$phone = Phone::setPhone("987654321")->validate();
+$phone = Phone::setPhone("987654321");
+$phone->quiet()->validate();
 // => true
 
 $phone->format();
@@ -290,7 +291,8 @@ Phone::factory()->unique()->prefix(2)->make(3)->all();
 */
 ```
 
-Use `format` (check [choosing format](#choosing-format)) modifier to give desired format to numbers.
+Use `format` (check [choosing format](#choosing-format)) modifier to give
+desired format to numbers.
 ```php
 Phone::factory()->make()->format()->first();
 // => "+56 68 4-987-466"
